@@ -1,6 +1,6 @@
 name: formaestro
 description: Reactive, async-first form orchestration for Flutter with cross-field validation and great DX.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/MarciohsjOliveira/formaestro
 repository: https://github.com/MarciohsjOliveira/formaestro
 issue_tracker: https://github.com/MarciohsjOliveira/formaestro/issues
