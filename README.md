@@ -9,11 +9,12 @@
 
 A **reactive, async-first** form engine for Flutter with **cross-field validation** and a delightful DX.
 
-https://github.com/MarciohsjOliveira/formaestro
+**Repository:** https://github.com/MarciohsjOliveira/formaestro
 
 ## Quickstart
 
 ```dart
+// Define your schema
 final schema = FormaestroSchema({
   'email': FieldX<String>(
     validators: [Validators.required(), Validators.email()],
@@ -22,18 +23,27 @@ final schema = FormaestroSchema({
   'confirm': FieldX<String>(),
 }, rules: [
   Rule.cross(['password', 'confirm'], (values) {
-    return values['password'] == values['confirm'] ? null : 'Passwords mismatch';
+    return values['password'] == values['confirm']
+        ? null
+        : 'Passwords mismatch';
   }),
 ]);
 
+// Create the form (with debounce)
 final form = Formaestro(schema, debounce: const Duration(milliseconds: 250));
 
-// Wire to your text fields via controllers:
+// Bind to your widgets
 final email = form.field<String>('email');
-// email.controller etc.
+// TextField(
+//   onChanged: email.setValue,
+//   decoration: InputDecoration(errorText: email.error),
+// )
 
-final isValid = await form.validateAll();
-if (isValid) submit(form.values);
+final ok = await form.validateAll();
+if (ok) {
+  // submit form.values
+}
+
 ```
 
 ## Examples
@@ -41,6 +51,14 @@ if (isValid) submit(form.values);
   - signup with async validators
   - cross-field rules
   - debounce + cancellation
+
+## Features
+
+- Type-safe fields (FieldX<T>)
+- Async-first validation (debounce + composable validators)
+- Cross-field rules (Rule.cross / Rule.crossAsync)
+- Reactive streams: valueStream / errorStream
+- Framework-agnostic (BLoC / Riverpod / Provider)
 
 ## Roadmap
 - Adapters for `flutter_bloc`, `riverpod`
