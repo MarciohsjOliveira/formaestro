@@ -9,7 +9,7 @@
 
 A **reactive, async-first** form engine for Flutter with **cross-field validation** and a delightful DX.
 
-https://github.com/your-org/formaestro
+https://github.com/MarciohsjOliveira/formaestro
 
 ## Quickstart
 
