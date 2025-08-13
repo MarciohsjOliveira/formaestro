@@ -1,0 +1,20 @@
+# Exclude local builds and caches
+.dart_tool/
+build/
+coverage/
+packages
+pubspec.lock
+
+# IDE/editor files
+.idea/
+.vscode/
+*.iml
+
+# CI and repo meta
+.github/
+
+# Keep the published package lean
+extras/
+
+# Examples beyond the canonical /example app are nested under /example/advanced
+# (they'll be included automatically as part of /example tree)

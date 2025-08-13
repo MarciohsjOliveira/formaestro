@@ -1,0 +1,19 @@
+name: riverpod_example
+description: Formaestro + Riverpod example
+publish_to: 'none'
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  formaestro:
+    path: ../../../
+  formaestro_riverpod:
+    path: ../../../extras/formaestro_riverpod
+
+flutter:
+  uses-material-design: true

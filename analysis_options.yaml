@@ -1,0 +1,22 @@
+include: package:lints/recommended.yaml
+
+analyzer:
+  language:
+    strict-inference: true
+    strict-raw-types: true
+  errors:
+    missing_return: error
+    avoid_print: error
+    unused_import: error
+  exclude:
+    - example/**
+    - examples/**
+    - extras/**
+
+linter:
+  rules:
+    - public_member_api_docs
+    - avoid_print
+    - prefer_final_locals
+    - always_declare_return_types
+    - unnecessary_lambdas

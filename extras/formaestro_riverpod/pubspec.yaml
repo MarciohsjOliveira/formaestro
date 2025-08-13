@@ -1,0 +1,19 @@
+name: formaestro_riverpod
+description: Riverpod adapter for formaestro (separate optional package).
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  formaestro:
+    path: ../../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
