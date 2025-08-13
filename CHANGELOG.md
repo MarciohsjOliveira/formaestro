@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 - 2025-08-13
+## 1.0.1 - 2025-08-13
 - Stable release with reactive streams, async validators, cross-field rules.
 - Examples for BLoC and Riverpod.
 - Full public API docstrings and strict lints.
