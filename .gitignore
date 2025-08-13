@@ -1,0 +1,9 @@
+
+# Flutter/Dart artifacts
+**/.dart_tool/
+**/build/
+
+# (opcional) ignorar todos os lock files…
+# pubspec.lock
+# …mas manter o do example se quiser:
+# !example/pubspec.lock
