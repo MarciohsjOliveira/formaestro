@@ -19,11 +19,12 @@ class Formaestro {
 
   Timer? _debouncer;
 
-  /// Map of field names to [FieldX] instances.
+  /// All fields in this form keyed by their names.
   Map<String, FieldX<dynamic>> get fields => schema.fields;
 
   /// Returns a typed field by [name].
-  /// Throws [ArgumentError] if the field does not exist.
+  ///
+  /// Throws [ArgumentError] if the field does not exist or has a different type.
   FieldX<T> field<T>(String name) {
     final f = fields[name];
     if (f == null) throw ArgumentError('Field not found: $name');
@@ -31,10 +32,10 @@ class Formaestro {
   }
 
   /// Current values snapshot.
-  Map<String, dynamic> get values =>
-      fields.map((k, v) => MapEntry(k, v.value));
+  Map<String, dynamic> get values => fields.map((k, v) => MapEntry(k, v.value));
 
-  /// Validates all fields (sync + async) and cross-field rules.
+  /// Validates all fields (sync + async) and then applies cross-field [Rule]s.
+  ///
   /// Returns `true` if the whole form is valid.
   Future<bool> validateAll() async {
     if (debounce.inMilliseconds > 0) {
@@ -82,6 +83,8 @@ class Formaestro {
 /// Immutable schema describing the structure of a [Formaestro] form:
 /// a map of named [FieldX] plus a set of cross-field [Rule]s.
 class FormaestroSchema {
+  /// Creates a [FormaestroSchema] with an immutable map of [fields]
+  /// and an optional list of cross-field [rules].
   FormaestroSchema(Map<String, FieldX<dynamic>> fields, {List<Rule>? rules})
       : fields = Map.unmodifiable(fields),
         rules = List.unmodifiable(rules ?? []) {
