@@ -1,14 +1,18 @@
 name: Release Please
-
 on:
   push:
     branches: [ main ]
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   release-please:
     runs-on: ubuntu-latest
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - uses: googleapis/release-please-action@v4
         with:
           release-type: dart
-          package-name: formaestro
+          # opcional: target-branch: main
+          # NÃO usar: package-name
+          # opcional: token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
