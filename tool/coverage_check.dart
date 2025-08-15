@@ -10,7 +10,8 @@ void fail(String msg) {
 }
 
 void main(List<String> args) async {
-  final threshold = args.isNotEmpty ? double.tryParse(args.first) ?? 90.0 : 90.0;
+  final threshold =
+      args.isNotEmpty ? double.tryParse(args.first) ?? 90.0 : 90.0;
   final file = File('coverage/lcov.info');
   if (!file.existsSync()) {
     fail('coverage/lcov.info not found. Run "flutter test --coverage" first.');
@@ -42,7 +43,8 @@ void main(List<String> args) async {
 
   if (kDebugMode) {
     if (kDebugMode) {
-      print('Coverage (lib/): ${pct.toStringAsFixed(2)}% (hits=$hit total=$total) — threshold=$threshold%');
+      print(
+          'Coverage (lib/): ${pct.toStringAsFixed(2)}% (hits=$hit total=$total) — threshold=$threshold%');
     }
   }
 
@@ -64,6 +66,7 @@ void main(List<String> args) async {
   }
 
   if (pct + 0.0001 < threshold) {
-    fail('Coverage below threshold (${pct.toStringAsFixed(2)}% < $threshold%).');
+    fail(
+        'Coverage below threshold (${pct.toStringAsFixed(2)}% < $threshold%).');
   }
 }
