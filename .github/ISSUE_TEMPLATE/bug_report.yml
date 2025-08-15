@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible bug
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for filing a bug! Please fill out the form below."
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      placeholder: "e.g., 1.1.0"
+    validations:
+      required: true
+  - type: input
+    id: flutter
+    attributes:
+      label: Flutter & Dart versions
+      placeholder: "flutter --version"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What happened? What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: "Link to a minimal repo or provide concise steps/snippets."
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I have searched existing issues
+          required: true
+        - label: I can reproduce this with the latest version
+          required: true

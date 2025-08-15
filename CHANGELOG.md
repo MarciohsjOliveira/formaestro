@@ -1,17 +1,11 @@
 # Changelog
 
-## 1.0.1 - 2025-08-13
+All notable changes to this project will be documented in this file.
 
-- Docs: update README (links e GIF)
-- CI: update docstrings FormaestroSchema
-
-## 1.0.0 - 2025-08-13
-
-- Stable release with reactive streams, async validators, cross-field rules.
-- Examples for BLoC and Riverpod.
-- Full public API docstrings and strict lints.
-- CI with analyze + tests + coverage.
-
-## 0.1.0 - 2025-08-13
-
-- Initial public scaffold with core types, example app, CI workflow, and tests.
+## 1.1.0 — 2025-08-14
+- Clean Architecture domain core (`FieldX`, `FieldState`, `Rule`, `Formaestro`).
+- Debounced async validators + synchronous validators.
+- Cross-field rules (sync/async).
+- `FieldXBuilder` Flutter adapter.
+- Test suite targeting ≥ 90% coverage.
+- Safety around `dispose()` for debounced timers and late emissions.

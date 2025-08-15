@@ -1,5 +1,24 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub-cache/
+build/
+**/GeneratedPluginRegistrant.java
+**/GeneratedPluginRegistrant.m
+.flutter-plugins
+.flutter-plugins-dependencies
 
-# Generated
-**/.dart_tool/
-**/build/
+# iOS/Android
+ios/Pods/
+android/.gradle/
+android/app/release/
+android/local.properties
+
+# Misc
+.DS_Store
+.idea/
+.vscode/
+
+# Coverage (não versionamos artifacts)
 coverage/
+EOF
