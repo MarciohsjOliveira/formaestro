@@ -36,6 +36,8 @@ jobs:
         run: flutter test --coverage
 
       - name: Enforce 90% coverage (lib only)
+        env:
+          DEBUG_COVERAGE: "1"  
         run: bash scripts/coverage.sh 90
 
       - name: Upload coverage
