@@ -1,7 +1,8 @@
-/// Public exports for formaestro package.
+// Library facade
 library formaestro;
 
-export 'src/core/formaestro.dart';
-export 'src/core/field_x.dart';
-export 'src/core/rule.dart';
-export 'src/validation/validators.dart';
+export 'src/domain/contracts.dart';
+export 'src/domain/field.dart';
+export 'src/domain/formaestro.dart';
+export 'src/i18n/messages.dart';
+export 'src/flutter_adapters/field_builder.dart';

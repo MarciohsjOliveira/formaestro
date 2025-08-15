@@ -2,6 +2,7 @@ import 'dart:async';
 
 /// Synchronous validator: returns an error message or `null` if valid.
 typedef ValidatorSync<T> = String? Function(T value);
+
 /// Asynchronous validator: returns an error message or `null` if valid.
 typedef ValidatorAsync<T> = Future<String?> Function(T value);
 
@@ -23,7 +24,8 @@ class FieldX<T> {
 
   /// Reactive streams
   final StreamController<T> _valueCtrl = StreamController<T>.broadcast();
-  final StreamController<String?> _errorCtrl = StreamController<String?>.broadcast();
+  final StreamController<String?> _errorCtrl =
+      StreamController<String?>.broadcast();
 
   /// Stream of value changes for reactive UIs.
   Stream<T> get valueStream => _valueCtrl.stream;
@@ -35,10 +37,13 @@ class FieldX<T> {
   final T initialValue;
 
   T _value;
+
   /// Whether the field has been focused/changed by the user.
   bool touched = false;
+
   /// Whether the value differs from [initialValue].
   bool dirty = false;
+
   /// Last validation error (`null` when valid).
   String? error;
 

@@ -1,22 +1,25 @@
+# Strong, modern lints tuned for packages published on pub.dev.
 include: package:lints/recommended.yaml
 
 analyzer:
   language:
     strict-inference: true
     strict-raw-types: true
-  errors:
-    missing_return: error
-    avoid_print: error
-    unused_import: error
   exclude:
-    - example/**
-    - examples/**
-    - extras/**
+    - "**/*.g.dart"
+    - "build/**"
+    - "example/**/.dart_tool/**"
+    - ".dart_tool/**"
+  errors:
+    public_member_api_docs: info
+    always_use_package_imports: warning
 
 linter:
   rules:
-    - public_member_api_docs
+    - always_use_package_imports
     - avoid_print
+    - avoid_redundant_argument_values
+    - prefer_const_constructors
     - prefer_final_locals
-    - always_declare_return_types
-    - unnecessary_lambdas
+    - sort_pub_dependencies
+    - use_super_parameters

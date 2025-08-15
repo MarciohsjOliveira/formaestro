@@ -1,16 +1,15 @@
-name: formx_example
-description: Example app for formaestro.
-publish_to: 'none'
+name: formaestro_example
+description: Minimal example for the formaestro package.
+publish_to: "none"
 
 environment:
   sdk: ">=3.3.0 <4.0.0"
-  flutter: ">=3.22.0"
 
 dependencies:
   flutter:
     sdk: flutter
   formaestro:
-    path: ../
+    path: ..
 
 flutter:
   uses-material-design: true
