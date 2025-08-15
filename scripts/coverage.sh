@@ -15,7 +15,7 @@ hit=0
 inlib=0
 path=""
 
-# Conta apenas linhas DA: de arquivos dentro de lib/ (relativo ou absoluto)
+# Conta só linhas DA: de arquivos dentro de lib/ (relativo ou absoluto)
 while IFS= read -r line; do
   if [[ "$line" == SF:* ]]; then
     path="${line#SF:}"
@@ -39,16 +39,13 @@ fi
 
 echo "Coverage (lib/): ${pct}% (hits=${hit} total=${total}) — threshold=${THRESHOLD}%"
 
-# 5 piores arquivos para ajudar (diagnóstico)
+# 5 piores arquivos (diagnóstico, sem duplicados)
 awk '
   BEGIN{FS=":"}
   /^SF:/ {
     path=substr($0,4)
     islib = (index(path,"/lib/")>0 || substr(path,1,4)=="lib/")
-    if (islib) {
-      files[path,"t"]=0
-      files[path,"h"]=0
-    }
+    if (islib) { files[path,"t"]=0; files[path,"h"]=0 }
     next
   }
   /^DA:/ {
@@ -63,16 +60,12 @@ awk '
   }
   END {
     for (k in files) {
-      split(k, parts, SUBSEP)
-      f = parts[1]
+      split(k, parts, SUBSEP); f = parts[1]
       t = files[f,"t"]; h = files[f,"h"]
-      if (t>0) {
-        pc = (h*100)/t
-        printf("%.2f%%\t%s\n", pc, f)
-      }
+      if (t>0) { pc = (h*100)/t; printf("%.2f%%\t%s\n", pc, f) }
     }
   }
-' "$LCOV" | sort -n | head -n 5 | sed 's/^/  - /'
+' "$LCOV" | sort -n | awk '!seen[$0]++' | head -n 5 | sed 's/^/  - /'
 
 # Enforce threshold
 awk -v p="$pct" -v th="$THRESHOLD" 'BEGIN{ exit (p+0.0001 < th) ? 1 : 0 }' || {
