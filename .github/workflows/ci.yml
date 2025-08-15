@@ -35,11 +35,13 @@ jobs:
       - name: Test with coverage
         run: flutter test --coverage
 
-      - name: Enforce 90% coverage (lib only)     
-        run: bash scripts/coverage.sh 90
+
+      - name: Enforce 90% coverage (lib only)
+        run: dart run tool/coverage_check.dart 90
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
         with:
           name: lcov.info
           path: coverage/lcov.info
+
