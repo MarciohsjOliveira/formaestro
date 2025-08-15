@@ -37,7 +37,9 @@ jobs:
 
 
       - name: Enforce 90% coverage (lib only)
-        run: dart tool/coverage_check.dart 90
+        run: |
+         dart --disable-dart-dev --no-packages tool/coverage_check.dart 90 \
+         || bash scripts/coverage.sh 90
 
       - name: Upload coverage
         uses: actions/upload-artifact@v4
