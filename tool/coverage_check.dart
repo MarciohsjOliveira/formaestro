@@ -8,7 +8,8 @@ Never fail(String msg) {
 }
 
 void main(List<String> args) async {
-  final threshold = args.isNotEmpty ? double.tryParse(args.first) ?? 90.0 : 90.0;
+  final threshold =
+      args.isNotEmpty ? double.tryParse(args.first) ?? 90.0 : 90.0;
   final lcovFile = File('coverage/lcov.info');
   if (!lcovFile.existsSync()) {
     fail('coverage/lcov.info not found. Run "flutter test --coverage" first.');
@@ -18,7 +19,7 @@ void main(List<String> args) async {
 
   final lines = const LineSplitter().convert(await lcovFile.readAsString());
   final totals = <String, int>{}; // DA total por arquivo
-  final hits = <String, int>{};   // DA com exec>0 por arquivo
+  final hits = <String, int>{}; // DA com exec>0 por arquivo
   String? current;
 
   for (final line in lines) {
@@ -59,6 +60,7 @@ void main(List<String> args) async {
   }
 
   if (pct + 0.0001 < threshold) {
-    fail('Coverage below threshold (${pct.toStringAsFixed(2)}% < $threshold%).');
+    fail(
+        'Coverage below threshold (${pct.toStringAsFixed(2)}% < $threshold%).');
   }
 }
